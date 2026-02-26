@@ -11,17 +11,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.complexace.marginal.core.MockConnector
+import com.complexace.marginal.core.model.Platform
+import com.complexace.marginal.core.PlatformRegistry
 import com.complexace.marginal.ui.theme.MarginalTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        PlatformRegistry.register(
+            Platform("mock", "Mock"),
+            MockConnector()
+        )
         enableEdgeToEdge()
         setContent {
             MarginalTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Motherfucker",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -42,6 +49,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MarginalTheme {
-        Greeting("Android")
+        Greeting("Motherfucker")
     }
 }
