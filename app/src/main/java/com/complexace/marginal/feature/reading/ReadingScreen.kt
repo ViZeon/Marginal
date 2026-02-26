@@ -30,6 +30,7 @@ fun ReadingScreen(viewModel: ReadingViewModel) {
     val state by viewModel.state.collectAsState()
     val chromeVisible by viewModel.chromeVisible.collectAsState()
     val interactionSource = remember { MutableInteractionSource() }
+    var settingsOpen by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -63,12 +64,18 @@ fun ReadingScreen(viewModel: ReadingViewModel) {
                     ReadingChrome(
                         work = success.work,
                         chapter = success.chapter,
-                        onBack = { }
+                        onBack = { },
+                        onSettingsClick = { settingsOpen = true }
                     )
+                }
+
+                if (settingsOpen) {
+                    SettingsSheet(onDismiss = { settingsOpen = false })
                 }
             }
         }
     }
+
 }
 
 @Composable
@@ -154,7 +161,7 @@ fun ProgressBar(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ReadingChrome(work: Work, chapter: Chapter, onBack: () -> Unit) {
+fun ReadingChrome(work: Work, chapter: Chapter, onBack: () -> Unit, onSettingsClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Top bar
         Row(
@@ -227,7 +234,7 @@ fun ReadingChrome(work: Work, chapter: Chapter, onBack: () -> Unit) {
                         tint = TextSecondary
                     )
                 }
-                IconButton(onClick = { /* settings */ }) {
+                IconButton(onClick = onSettingsClick) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
                         contentDescription = "Settings",
