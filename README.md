@@ -1,5 +1,9 @@
 Marginal is a Reading app for online fiction platforms [Particulary AO3] under development.
 
+There is a Protoype available for download in the **Releases** page
+
+<img width="647" height="1280" alt="Image" src="https://github.com/user-attachments/assets/49f79ec7-e042-413c-9b71-b151fc95c034" />
+
 ### Goals:
 - Clean, smooth reading experience without interruptions
 - Online functionality (profile, comments, tags, search...)
@@ -7,9 +11,13 @@ Marginal is a Reading app for online fiction platforms [Particulary AO3] under d
 
 ### Plan:
 [x] Smooth reading UI (basic)
+
 [ ] AO3 integration (content)
+
 [ ] AO3 integration (Login)
+
 [ ] Search, Library adn Bookmarks feattures
+
 [ ] Comments and inline comments
 
 ### How it works: 
