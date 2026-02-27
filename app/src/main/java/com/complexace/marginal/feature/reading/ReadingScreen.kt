@@ -24,6 +24,12 @@ import com.complexace.marginal.ui.theme.TextSecondary
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.fromHtml
+import androidx.compose.ui.text.style.TextDecoration
+
 
 @Composable
 fun ReadingScreen(viewModel: ReadingViewModel) {
@@ -107,12 +113,21 @@ fun ReadingContent(work: Work, chapter: Chapter, chromeVisible: Boolean, modifie
             )
         }
         // Author note if present
+
         chapter.authorNote?.let { note ->
             item {
                 Text(
-                    text = note,
+                    text = AnnotatedString.fromHtml(
+                        htmlString = note,
+                        linkStyles = TextLinkStyles(
+                            style = SpanStyle(
+                                color = MaterialTheme.colorScheme.primary, // Highlights the link
+                                textDecoration = TextDecoration.Underline  // Adds the underline
+                            )
+                        )
+                    ),
                     style = MaterialTheme.typography.bodyLarge,
-                    color = TextSecondary,
+                    color = TextSecondary, // Non-link text remains secondary
                     modifier = Modifier
                         .padding(bottom = 32.dp)
                         .padding(start = 12.dp)
