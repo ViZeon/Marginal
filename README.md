@@ -26,3 +26,5 @@ the app will run a browser in the background, so loading pages will register rea
 ### How to Build/Compile:
 WIP
 But this project was made using Android Studio, and written with Kotlin.
+
+Discord: https://discord.gg/CtFJXAJ6QE
